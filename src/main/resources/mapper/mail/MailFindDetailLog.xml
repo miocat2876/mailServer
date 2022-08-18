@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="common.mailServer.mail.board.mapper.MailDetailLogMapper">
+
+    <select id="findByRecipienstLog" parameterType="string" resultType="MailLogRecipientDto">
+        SELECT RECIPIENTS.NUM_PK   AS num
+             , PROJECT_NAME        AS projectName
+             , SENDER              AS sender
+             , SUBJECT             AS subject
+             , TEXT                AS text
+             , STATUS              AS status
+             , DATE                AS date
+             , RECIPIENT           AS recipient
+          FROM(SELECT NUM_PK       AS NUM_PK
+                    , PROJECT_NAME AS PROJECT_NAME
+                    , SENDER       AS SENDER
+                    , SUBJECT      AS SUBJECT
+                    , TEXT         AS TEXT
+                    , STATUS       AS STATUS
+                    , DATE         AS DATE
+                 FROM LOG_SENDER_TB
+                WHERE NUM_PK = #{id}
+              ) AS SENDER
+         INNER JOIN LOG_RECIPIENTS_TB AS RECIPIENTS
+            ON SENDER.NUM_PK = RECIPIENTS.LOG_SENDER_FK
+    </select>
+
+    <select id="findByFilesLog" parameterType="string" resultType="MailLogFileDto">
+        SELECT FILE.NUM_PK         AS num
+             , PROJECT_NAME        AS projectName
+             , SENDER              AS sender
+             , SUBJECT             AS subject
+             , TEXT                AS text
+             , STATUS              AS status
+             , DATE                AS date
+             , FILE_NAME           AS fileName
+             , EXTENSION           AS extension
+          FROM(SELECT NUM_PK       AS NUM_PK
+                    , PROJECT_NAME AS PROJECT_NAME
+                    , SENDER       AS SENDER
+                    , SUBJECT      AS SUBJECT
+                    , TEXT         AS TEXT
+                    , STATUS       AS STATUS
+                    , DATE         AS DATE
+                 FROM LOG_SENDER_TB
+                WHERE NUM_PK = #{id}
+             ) AS SENDER
+          INNER JOIN LOG_FILE_TB AS FILE
+             ON SENDER.NUM_PK = FILE.LOG_SENDER_FK;
+    </select>
+</mapper>

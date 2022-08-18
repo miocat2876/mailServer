@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<title>메일 로그</title>
+	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../iconfont/material-icons.css">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: {
+						clifford: '#da373d',
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+
+<div id="dim-wrapper" style="display: none">
+	<div id="dim" style="  position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-filter: opacity(0.3);
+        filter: opacity(0.3);
+        background-color: black;
+        z-index: 10;"></div>
+	<img id="loading-img" src="../image/loadingImg.png" class="w100" alt="" style="display:none; position: fixed; width: 120px; height: 120px;
+        top: calc(50% - 60px); left: calc(50% - 60px); animation: rotate 2s infinite linear; z-index: 100;
+        ">
+	<style>
+        @keyframes rotate {
+            from {
+                -webkit-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+	</style>
+</div>
+
+<div class="container w-full mx-auto my-2">
+	<p class="font-sans text-right text-2xl mb-2 text-slate-500 cursor-pointer hover:text-blue-600" onclick="location.href=''">MAIL LOGS</p>
+	<div class="flex flex-col mb-1 items-end w-full">
+		<div class="relative rounded-lg shadow-sm w-3/12">
+			<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-auto">
+				<svg class="absolute text-slate-400 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+					<path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+				</svg>
+			</div>
+			<input id="searchValue" type="text" placeholder="프로젝트 검색" class="font-sans block text-sm w-full pl-10 py-2 px-3 ring-1 ring-slate-900/10 text-slate-500 rounded-lg">
+		</div>
+	</div>
+	<table class="border-separate border border-slate-400 w-full">
+		<thead>
+		<tr>
+			<th class="border border-slate-200 w-1/12">번호</th>
+			<th class="border border-slate-300 w-6/12">프로젝트명</th>
+			<th class="border border-slate-300 w-2/12">발신자</th>
+			<th class="border border-slate-300 w-1/12">상태</th>
+			<th class="border border-slate-300 w-2/12">날짜</th>
+		</tr>
+		</thead>
+		<tbody id="integration-data">
+		</tbody>
+	</table>
+	<div id="slide-bottom-arrow" class="text-center">
+            <span class="material-icons text-3xl mt-3">
+                expand_more
+            </span>
+	</div>
+</div>
+
+<div id="custom-popup"></div>
+
+</body>
+
+<!-- 콜 프로세스 빼기 생성 로직 빼기-->
+
+<script type="module">
+	import { ScrollPaging, PopupCreator } from "../js/pageUtil.js";
+	import { ajaxCall } from "../js/ajax.js";
+
+	let address = location.origin;
+
+	function createLogPopup(){
+		const popup = new PopupCreator();
+		return function(id){
+
+			ajaxCall().getOne(`${address}/log`,id).then(({data})=>{
+
+				const {recipients,files} = data;
+				let recipientsHtml = "";
+				let filesHtml = "";
+				for (const recipient of recipients) {
+					recipientsHtml = `<tr class="text-center">
+                                        <td class="border border-slate-300">${recipient.num}</td>
+                                        <td class="border border-slate-300">${recipient.projectName}</td>
+                                        <td class="border border-slate-300">${recipient.recipient}</td>
+                                        <td class="border border-slate-300">${recipient.sender}</td>
+                                        <td class="border border-slate-300">${recipient.status}</td>
+                                        <td class="border border-slate-300">${recipient.date}</td>
+                                    </tr>`
+				}
+				for (const file of files) {
+					filesHtml = `<tr class="text-center">
+                                        <td class="border border-slate-300">${file.num}</td>
+                                        <td class="border border-slate-300">${file.fileName}</td>
+                                        <td class="border border-slate-300">${file.date}</td>
+                                    </tr>`
+				}
+				const result = `<p class="font-sans text-sm mb-2 text-slate-500 cursor-pointer hover:text-blue-600">수신자 목록</p>
+                    <table class="border-separate border border-slate-400 w-full mb-2">
+                        <thead>
+                        <tr>
+                            <th class="border border-slate-200 w-1/12">번호</th>
+                            <th class="border border-slate-300 w-2/12">프로젝트명</th>
+                            <th class="border border-slate-300 w-2/12">발신자</th>
+                            <th class="border border-slate-300 w-2/12">수신자</th>
+                            <th class="border border-slate-300 w-1/12">상태</th>
+                            <th class="border border-slate-300 w-2/12">날짜</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            ${recipientsHtml}
+                        </tbody>
+                    </table>
+                    <p class="font-sans text-sm mb-2 text-slate-500 cursor-pointer hover:text-blue-600">파일 목록</p>
+                    <table class="border-separate border border-slate-400 w-full">
+                        <thead>
+                            <tr>
+                            <th class="border border-slate-200 w-1/12">번호</th>
+                            <th class="border border-slate-300 w-3/12">파일명</th>
+                            <th class="border border-slate-300 w-2/12">날짜</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${filesHtml}
+                        </tbody>
+                    </table>`
+
+				popup.popupOpen("메일 상세 로그",function(){
+					return result;
+				});
+
+			});
+		}
+	}
+
+	let logpop = new createLogPopup();
+
+	let page = new ScrollPaging(`${address}/sender-logs`,(data)=>{
+		let integrationData = document.getElementById("integration-data");
+		let slideBottomArrow = document.getElementById("slide-bottom-arrow");
+		let innerHtml = integrationData.innerHTML;
+		for(const dto of data.list){
+			innerHtml +=`<tr class="text-center ${dto.status === "실패" ? `line-through` : ``}">
+                                <td class="border border-slate-300">${dto.num}</td>
+                                <td class="border border-slate-300 cursor-pointer hover:bg-slate-100 evt-popupClick" data-num="${dto.num}">${dto.projectName}</td>
+                                <td class="border border-slate-300">${dto.sender}</td>
+                                <td class="border border-slate-300">${dto.status}</td>
+                                <td class="border border-slate-300">${dto.date}</td>
+                            </tr>`
+		}
+		integrationData.innerHTML = innerHtml;
+		const popupClickList = document.getElementsByClassName("evt-popupClick");
+
+		for(const dom of popupClickList){
+
+			dom.addEventListener("click",(e)=>{
+				logpop(e.target.dataset.num);
+			});
+		}
+		if (data.list.length < data.viewRow){
+			slideBottomArrow.style.display = 'none';
+			return false;
+		}else{
+			slideBottomArrow.style.display = 'block';
+		}
+	});
+
+	function paging(){
+		const searchValue = document.getElementById('searchValue').value;
+		page.call({searchCondition : 'PROJECT_NAME',searchValue});
+	}
+
+	function search(){
+		document.getElementById("integration-data").innerHTML = "";
+		const searchValue = document.getElementById('searchValue').value;
+		page.init();
+		page.call({searchCondition : 'PROJECT_NAME',searchValue});
+	}
+
+	//이벤트
+	document.getElementById("searchValue").addEventListener("keyup",(e)=>{
+		console.log("asdas");
+		if(e.keyCode===13){
+			search();
+		}
+	})
+
+	window.addEventListener('wheel',(event)=>{
+		let scrollY =  window.innerHeight + window.scrollY;//브라우저 안쪽 길이 + 스크롤의 현재 위치
+		if (event.deltaY > 0 ) {//|| event.originalEvent.detail < 0
+			if(scrollY > document.body.offsetHeight){//body태그 문서 길이
+				paging();
+			}else if(window.innerHeight >= document.body.offsetHeight){//초기 데이터양이 적어 스크롤이 생기지 않으면
+				paging();
+			}
+		}
+	});
+
+	//첫화면 실행
+	paging();
+
+</script>
+
+</html>

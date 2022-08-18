@@ -1,0 +1,54 @@
+2022-08-08 00:16:07.334  INFO 22168 --- [restartedMain] common.mailServer.MailServerApplication  : Starting MailServerApplication using Java 1.8.0_191-1-ojdkbuild on DESKTOP-EUJHUPH with PID 22168 (D:\spring-tool-suite-4-4.15.1.RELEASE-e4.24.0-win32.win32.x86_64.self-extracting\contents\customer-master\customer-master\mailServer\target\classes started by kim in D:\spring-tool-suite-4-4.15.1.RELEASE-e4.24.0-win32.win32.x86_64.self-extracting\contents\customer-master\customer-master\mailServer)
+2022-08-08 00:16:07.335  INFO 22168 --- [restartedMain] common.mailServer.MailServerApplication  : The following 2 profiles are active: "db", "dev"
+2022-08-08 00:16:07.680  INFO 22168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-08-08 00:16:07.682  INFO 22168 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-08 00:16:07.683  INFO 22168 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-08 00:16:07.703  INFO 22168 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-08 00:16:07.703  INFO 22168 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 366 ms
+2022-08-08 00:16:07.705 DEBUG 22168 --- [restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648
+2022-08-08 00:16:07.706 DEBUG 22168 --- [restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2022-08-08 00:16:07.767 DEBUG 22168 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 10 mappings in 'requestMappingHandlerMapping'
+2022-08-08 00:16:07.781 DEBUG 22168 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
+2022-08-08 00:16:07.787 DEBUG 22168 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/**] in 'resourceHandlerMapping'
+2022-08-08 00:16:07.800  INFO 22168 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-08 00:16:07.802 DEBUG 22168 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-08-08 00:16:07.807 DEBUG 22168 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-08-08 00:16:07.851  INFO 22168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-08-08 00:16:07.872  INFO 22168 --- [restartedMain] common.mailServer.MailServerApplication  : Started MailServerApplication in 0.566 seconds (JVM running for 836.68)
+2022-08-08 00:16:07.873  INFO 22168 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-08-08 00:18:05.525  INFO 22168 --- [restartedMain] common.mailServer.MailServerApplication  : Starting MailServerApplication using Java 1.8.0_191-1-ojdkbuild on DESKTOP-EUJHUPH with PID 22168 (D:\spring-tool-suite-4-4.15.1.RELEASE-e4.24.0-win32.win32.x86_64.self-extracting\contents\customer-master\customer-master\mailServer\target\classes started by kim in D:\spring-tool-suite-4-4.15.1.RELEASE-e4.24.0-win32.win32.x86_64.self-extracting\contents\customer-master\customer-master\mailServer)
+2022-08-08 00:18:05.527  INFO 22168 --- [restartedMain] common.mailServer.MailServerApplication  : The following 2 profiles are active: "db", "dev"
+2022-08-08 00:18:05.912  INFO 22168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-08-08 00:18:05.914  INFO 22168 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-08 00:18:05.914  INFO 22168 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-08 00:18:05.933  INFO 22168 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-08 00:18:05.933  INFO 22168 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 404 ms
+2022-08-08 00:18:05.936 DEBUG 22168 --- [restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648
+2022-08-08 00:18:05.936 DEBUG 22168 --- [restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2022-08-08 00:18:06.002 DEBUG 22168 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 10 mappings in 'requestMappingHandlerMapping'
+2022-08-08 00:18:06.014 DEBUG 22168 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
+2022-08-08 00:18:06.019 DEBUG 22168 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/**] in 'resourceHandlerMapping'
+2022-08-08 00:18:06.028  INFO 22168 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-08 00:18:06.030 DEBUG 22168 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-08-08 00:18:06.033 DEBUG 22168 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-08-08 00:18:06.076  INFO 22168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-08-08 00:18:06.095  INFO 22168 --- [restartedMain] common.mailServer.MailServerApplication  : Started MailServerApplication in 0.601 seconds (JVM running for 954.904)
+2022-08-08 00:18:06.097  INFO 22168 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-08-08 00:18:08.301  INFO 22168 --- [restartedMain] common.mailServer.MailServerApplication  : Starting MailServerApplication using Java 1.8.0_191-1-ojdkbuild on DESKTOP-EUJHUPH with PID 22168 (D:\spring-tool-suite-4-4.15.1.RELEASE-e4.24.0-win32.win32.x86_64.self-extracting\contents\customer-master\customer-master\mailServer\target\classes started by kim in D:\spring-tool-suite-4-4.15.1.RELEASE-e4.24.0-win32.win32.x86_64.self-extracting\contents\customer-master\customer-master\mailServer)
+2022-08-08 00:18:08.302  INFO 22168 --- [restartedMain] common.mailServer.MailServerApplication  : The following 2 profiles are active: "db", "dev"
+2022-08-08 00:18:08.546  INFO 22168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-08-08 00:18:08.548  INFO 22168 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-08 00:18:08.548  INFO 22168 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-08 00:18:08.565  INFO 22168 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-08 00:18:08.565  INFO 22168 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 261 ms
+2022-08-08 00:18:08.568 DEBUG 22168 --- [restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648
+2022-08-08 00:18:08.568 DEBUG 22168 --- [restartedMain] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+2022-08-08 00:18:08.623 DEBUG 22168 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 10 mappings in 'requestMappingHandlerMapping'
+2022-08-08 00:18:08.633 DEBUG 22168 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/] in 'viewControllerHandlerMapping'
+2022-08-08 00:18:08.637 DEBUG 22168 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/swagger-ui/**] in 'resourceHandlerMapping'
+2022-08-08 00:18:08.645  INFO 22168 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-08-08 00:18:08.647 DEBUG 22168 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-08-08 00:18:08.650 DEBUG 22168 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-08-08 00:18:08.685  INFO 22168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-08-08 00:18:08.702  INFO 22168 --- [restartedMain] common.mailServer.MailServerApplication  : Started MailServerApplication in 0.424 seconds (JVM running for 957.51)
+2022-08-08 00:18:08.703  INFO 22168 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged

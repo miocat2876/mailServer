@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="common.mailServer.mail.sender.mapper.MailMapper">
+
+    <insert id="senderLogInsert" parameterType="MailDto">
+        INSERT INTO COMMON_MAIL.LOG_SENDER_TB
+            (PROJECT_NAME, SENDER, SUBJECT, `TEXT`,STATUS)
+        VALUES(#{projectName},#{sender},#{subject},#{text},#{status})
+    </insert>
+
+    <select id="findByMaxNum" resultType="int">
+        SELECT MAX(NUM_PK)
+          FROM COMMON_MAIL.LOG_SENDER_TB
+    </select>
+
+    <insert id="recipientsLogInsert" parameterType="map">
+        INSERT INTO  COMMON_MAIL.LOG_RECIPIENTS_TB
+            (LOG_SENDER_FK, recipient)
+        VALUES <foreach collection="recipients" item="recipient" separator=",">
+            (#{maxNum},#{recipient})
+               </foreach>
+    </insert>
+
+    <insert id="fileLogInsert" parameterType="map">
+        INSERT INTO  COMMON_MAIL.LOG_FILE_TB
+            (LOG_SENDER_FK, FILE_NAME, EXTENSION)
+        VALUES <foreach collection="files" item="file" separator=",">
+            (#{maxNum},#{file.fileName},#{file.extension})
+                </foreach>
+    </insert>
+</mapper>
