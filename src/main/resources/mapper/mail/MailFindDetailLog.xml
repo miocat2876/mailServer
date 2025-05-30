@@ -3,7 +3,7 @@
 
 <mapper namespace="common.mailServer.mail.board.mapper.MailDetailLogMapper">
 
-    <select id="findByRecipienstLog" parameterType="string" resultType="MailLogRecipientDto">
+    <select id="findByRecipientsLog" parameterType="string" resultType="MailLogRecipientDto">
         SELECT RECIPIENTS.NUM_PK   AS num
              , PROJECT_NAME        AS projectName
              , SENDER              AS sender
