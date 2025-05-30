@@ -23,7 +23,7 @@ public class MailDetailLogDao {
 
 	public Map<String,Object> findByLogs(String id){
 		Map<String,Object> resultMap = new HashMap<>();
-		resultMap.put("recipients",mailDetailLogMapper.findByRecipienstLog(id));
+                resultMap.put("recipients",mailDetailLogMapper.findByRecipientsLog(id));
 		resultMap.put("files",mailDetailLogMapper.findByFilesLog(id));
 		return resultMap;
 	}

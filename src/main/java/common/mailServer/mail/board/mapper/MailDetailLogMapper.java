@@ -9,6 +9,6 @@ import java.util.List;
 
 @Mapper
 public interface MailDetailLogMapper {
-	List<MailLogRecipientDto> findByRecipienstLog(String mailLogDto);
+        List<MailLogRecipientDto> findByRecipientsLog(String mailLogDto);
 	List<MailLogFileDto> findByFilesLog(String id);
 }
