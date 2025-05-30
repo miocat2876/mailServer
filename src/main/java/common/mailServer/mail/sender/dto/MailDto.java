@@ -27,8 +27,8 @@ public class MailDto {
 	@ApiModelProperty(value = "내용", required = true, example = "내용입니다.", dataType = "String", name = "text", notes = "text/html 타입으로 내용 전송")
 	@NotBlank(message = "내용[String text]은 필수 입니다")
 	private String text;
-	@ApiModelProperty(value = "파일", required = false, dataType = "String", name = "files", notes = "파일값을 배열로")
-	private MultipartFileCustomDto[] files;
+        @ApiModelProperty(value = "파일", required = false, dataType = "MultipartFileCustomDto[]", name = "files", notes = "파일값을 배열로")
+        private MultipartFileCustomDto[] files;
 	@ApiModelProperty(value = "DEFAULT/CUSTOM/TEMPLATE", required = false, example = "커스텀일 경우 {0} {1} 구분자를 통한 값을 주입함", dataType = "String", name = "type", notes = "메일 생성 기능 옵션")
 	private MailType mailType = MailType.DEFAULT;
 	@ApiModelProperty(value = "RANDOM_KEY", required = false, example = "RANDOM_KEY", dataType = "String", name = "option", notes = "옵션 생성 기능 옵션")
