@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.function.Function;
 
 public enum FileFilterType{
-	HAS_PERMIT_EXTENSION(FileFilterType::isRealFiles),
-	IS_REAL_FILES(FileFilterType::hasPermitExtension);
+        HAS_PERMIT_EXTENSION(FileFilterType::hasPermitExtension),
+        IS_REAL_FILES(FileFilterType::isRealFiles);
 
 	@Getter
 	private final Function<MultipartFileCustomDto,Boolean> function;

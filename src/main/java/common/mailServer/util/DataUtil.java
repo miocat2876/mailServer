@@ -38,20 +38,17 @@ public class DataUtil {
 		return UUID.randomUUID().toString();
 	}
 
-	public static String customReplace(String original, String...newTexts){
-		if("".equals(original) || newTexts.length <= 0) return original;
-		AtomicInteger index = new AtomicInteger();
-		return Arrays.stream(newTexts).reduce(original,(subtotal, element)-> subtotal.replace("{"+index+"}",element));
-	}
+        public static String customReplace(String original, String...newTexts){
+                if(original == null || original.isEmpty() || newTexts.length == 0) return original;
+                AtomicInteger index = new AtomicInteger();
+                return Arrays.stream(newTexts)
+                                .reduce(original,
+                                        (subtotal, element) -> subtotal.replace("{"+index.getAndIncrement()+"}", element));
+        }
 
-	public static String nullIf(String original, String basic){
-		if(isNotNull(original)){
-			if(isNotNull(basic)){
-				return basic;
-			}
-		}
-		return original;
-	}
+        public static String nullIf(String original, String basic){
+                return isNotNull(original) ? original : basic;
+        }
 
 	public static boolean isNotNull(String original){
 		return original != null && !"".equals(original);
